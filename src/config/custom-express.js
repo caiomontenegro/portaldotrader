@@ -5,13 +5,20 @@
 require('marko/node-require').install();
 require('marko/express');
 
+
 //Iniciação do framework Express, para facilitar o uso das requisições do protocolo HTTP.
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
-//Chamada das rotas através de uma constante chamada "Rotas"
+//Metodo para receber arquivos json nas requisições.
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+//Chamada das rotas através de uma constante chamada "Rotas".
 const rotas = require('../app/rotes/rotes')
-rotas(app);
 
 //Rotas passa a ser definida como "app", e em seguida é exportada.
+rotas(app);
 module.exports = app;

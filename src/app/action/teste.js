@@ -16,8 +16,3 @@ for (let x in memoria) {
 
 // Por ultimo, exportantos a variável "Memória atual" para o arquivo "rotes.js".
 module.exports = listaMemoria;
-
-
-
-
-
