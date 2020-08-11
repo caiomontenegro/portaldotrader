@@ -14,5 +14,5 @@ for (let x in memoria) {
     listaMemoria.push(MemoriaAtual);
 }
 
-// Por ultimo, exportantos a variável "Memória atual" para o arquivo "rotes.js".
+// Por ultimo, exportantos a lista "MemoriaLista" para o arquivo "rotes.js".
 module.exports = listaMemoria;

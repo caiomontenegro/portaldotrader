@@ -1,23 +1,18 @@
-let quantidade = require('../action/teste');
-let mensagem = require('../action/teste2');
-const { text } = require('express');
+// Importação da lista de armazenando de memórias, mensagem do módulo Express.
+let quantidade = require('../infra/consumoMemoria');
+let mensagem = require('../infra/saveMessage');
+const express = require('express');
 
 
 // O rotas denominadas "app", agora servem como parâmetro de uma arrow-funcition (Função Flecha).
 module.exports = (app) => {    
 
-//Segue abaixo das requisições de cada página html, criadas a partir de arquivos Marko.
+//Segue abaixo das requisições.
 
-    //Página principal.(index)
-    app.get('/', function(req, resp) {
-        resp.marko(
-            require('../views/testeestagio/index.marko') 
-        );
-    });
     //Página de monitoramento de memoria.(memory_usage)
     app.get('/memory_usage', function(req, resp) {
         resp.marko(
-            require('../views/testeestagio/memory.marko'),
+            require('../views/memory.marko'),
             {
                 consumo: [
                     //O consumo é detalhado através de um template dinâmico, onde a Quantidade
@@ -53,7 +48,7 @@ module.exports = (app) => {
             resp.send(mensagem[0])
         }
         else {
-            resp.status(419).json({ error:  "Não há strings" });
+            resp.status(419).json({ error: "Não há strings" });
         }
 
     });  
@@ -63,6 +58,7 @@ module.exports = (app) => {
         // Quando receber o params, o mesmo já será incluído na lista e será retornado o status code "204".
         resp.status(204).json({ Sucesso: "String Armazenada com sucesso"});
         mensagem[0] = text;
+        // Printa a lista no console para confirmar o push.
         console.log(mensagem);
     });      
 };
