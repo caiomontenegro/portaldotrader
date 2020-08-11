@@ -7,6 +7,6 @@ const app = require('./src/config/custom-express');
 
 // Comando para localizar a porta do servidor, e uma mensagem de confirmação.
 app.listen(80, function() {
-    console.log('servidor rodando na porta 3000');
+    console.log('servidor rodando na porta 80');
 });
 
